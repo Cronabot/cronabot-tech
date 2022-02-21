@@ -1,19 +1,24 @@
 import { FC } from 'react';
+import { DefaultSeo, NextSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
-import Head from 'next/head';
-import { ThemeProvider } from 'next-themes';
 
 import '@styles/global.scss';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
     return (
         <>
-            <Head>
-                <title>Cronabot.tech</title>
-            </Head>
-            <ThemeProvider>
-                <Component {...pageProps} />
-            </ThemeProvider>
+            <DefaultSeo
+                title={undefined}
+                titleTemplate='%s | cronabot.tech'
+                defaultTitle='cronabot.tech'
+                canonical='https://cronabot.tech/'
+                openGraph={{
+                    type: 'website',
+                    url: 'https://cronabot.tech/',
+                    site_name: 'cronabot.tech',
+                }}
+            />
+            <Component {...pageProps} />
         </>
     );
 };

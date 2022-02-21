@@ -3,7 +3,7 @@ import Navbar from '@components/Navbar/Navbar';
 
 interface Props {}
 
-const portfolio: FC<Props> = ({}) => {
+const Portfolio: FC<Props> = ({}) => {
     return (
         <>
             <Navbar />
@@ -12,4 +12,4 @@ const portfolio: FC<Props> = ({}) => {
     );
 };
 
-export default portfolio;
+export default Portfolio;

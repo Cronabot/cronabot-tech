@@ -3,7 +3,7 @@ import Navbar from '@components/Navbar/Navbar';
 
 interface Props {}
 
-const about: FC<Props> = ({}) => {
+const About: FC<Props> = ({}) => {
     return (
         <>
             <Navbar />
@@ -12,4 +12,4 @@ const about: FC<Props> = ({}) => {
     );
 };
 
-export default about;
+export default About;

@@ -7,7 +7,7 @@
         width: 5rem;
         height: 5rem;
         border: 0;
-        background-color: rgba($neutralDark, 0);
+        background-color: #fff0;
 
         .hamburger {
             position: fixed;
@@ -86,7 +86,7 @@
 
             div {
                 flex: 1;
-                background-color: lighten($neutralDark, 5%);
+                background-color: darken($neutralDark, 5%);
                 transform: translateX(100%);
                 transition: transform 0.5s, border-radius 0.5s;
                 border-radius: 33vh 0 0 33vh;
@@ -110,7 +110,7 @@
             z-index: 999;
 
             a {
-                color: $primary;
+                color: $neutralLight;
                 font-size: 2rem;
                 text-decoration: none;
                 transition-property: transform;

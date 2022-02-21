@@ -3,7 +3,7 @@ import Navbar from '@components/Navbar/Navbar';
 
 interface Props {}
 
-const contact: FC<Props> = ({}) => {
+const Contact: FC<Props> = ({}) => {
     return (
         <>
             <Navbar />
@@ -12,4 +12,4 @@ const contact: FC<Props> = ({}) => {
     );
 };
 
-export default contact;
+export default Contact;
