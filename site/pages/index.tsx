@@ -1,9 +1,13 @@
 import { FC, useEffect, useRef } from 'react';
-import Navbar from '@components/Navbar/Navbar';
+import Navbar from '@components/Navbar';
 import styles from '@styles/pages/index.module.scss';
 import { NextSeo } from 'next-seo';
 
+import dynamic from 'next/dynamic';
+
 interface Props {}
+
+const BoidSim = dynamic(() => import('@components/BoidSim'), { ssr: false });
 
 const Home: FC<Props> = ({}) => {
     const typedText = useRef(null);
@@ -29,8 +33,8 @@ const Home: FC<Props> = ({}) => {
         <>
             <NextSeo title='Home' />
             <Navbar />
+            <BoidSim />
             <div className={styles.landing}>
-                <canvas></canvas>
                 <div className={styles.text}>
                     <h3>Hey, I&#39;m</h3>
                     <h1>Mani Cronin</h1>
