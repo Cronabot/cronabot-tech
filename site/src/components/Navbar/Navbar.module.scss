@@ -93,22 +93,36 @@
         .bg {
             position: relative;
             z-index: 998;
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
             width: 100%;
             height: 100vh;
-            border-radius: 0;
 
             div {
-                flex: 1;
-                background-color: darken($neutralDark, 5%);
+                position: absolute;
+                width: 100%;
+                height: 100vh;
+                background-color: darken($neutralDark, 3%);
+                transition: transform 0.5s ease-in-out;
+                clip-path: polygon(0 0, 100% 0, 100% 100%);
+                top: 0;
+                left: 0;
                 transform: translateX(100%);
-                transition: transform 0.5s, border-radius 0.5s;
-                border-radius: 33vh 0 0 33vh;
-                &:first-child {
+                &.mid {
+                    clip-path: polygon(
+                        0 0,
+                        0.5% 0,
+                        100% 99.5%,
+                        100% 100%,
+                        99.5% 100%,
+                        0 0.5%
+                    );
+                    transform: 0;
+                    background-color: darken($neutralDark, 3%);
+                    opacity: 0;
+                    z-index: 1;
+                }
+                &:last-child {
                     transform: translateX(-100%);
-                    border-radius: 0 33vh 33vh 0;
+                    clip-path: polygon(0 0, 0 100%, 100% 100%);
                 }
             }
         }
@@ -131,14 +145,15 @@
                 text-decoration: none;
                 transition-property: transform;
                 transition-duration: 0.6s;
+                transition-delay: 0s;
                 padding: 3.5rem;
 
                 @for $i from 1 to 5 {
                     &:nth-child(#{$i}) {
                         @if $i <3 {
-                            transform: translateX(-100vw);
-                        } @else {
                             transform: translateX(100vw);
+                        } @else {
+                            transform: translateX(-100vw);
                         }
                     }
                 }
@@ -179,15 +194,17 @@
             pointer-events: all;
             opacity: 1;
             .bg {
-                display: flex;
                 div {
                     transform: none;
-                    border-radius: 0;
+                    &.mid {
+                        opacity: 1;
+                    }
                 }
             }
             .links {
                 opacity: 1;
                 a {
+                    transition-delay: 0.2s;
                     transform: none;
                 }
             }

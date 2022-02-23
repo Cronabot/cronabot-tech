@@ -47,6 +47,7 @@ const Navbar: FC<Props> = ({}) => {
                 <div className={styles.menu} ref={menuRef}>
                     <div className={styles.bg}>
                         <div></div>
+                        <div className={styles.mid}></div>
                         <div></div>
                     </div>
                     <div className={styles.links}>
