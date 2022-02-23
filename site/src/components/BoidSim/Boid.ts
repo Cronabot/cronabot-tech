@@ -17,7 +17,7 @@ class Boid {
         this.velocity.setMag(p5.random(2, 4));
         this.acceleration = p5.createVector();
         this.maxSpeed = 3;
-        this.maxForce = 0.2;
+        this.maxForce = 0.5;
     }
 
     flock(p5: p5Types, boids: Boid[]) {
@@ -25,11 +25,17 @@ class Boid {
         let alignmentForce = this.alignment(p5, boids);
         let cohesionForce = this.cohesion(p5, boids);
 
-        separationForce.mult(1.3);
+        let mousePos = p5.createVector(p5.mouseX, p5.mouseY);
+        let mouseAttractionForce = this.attraction(p5, mousePos);
+
+        separationForce.mult(1.5);
+        alignmentForce.mult(1);
+        mouseAttractionForce.mult(-2);
 
         this.acceleration.add(separationForce.div(this.size));
         this.acceleration.add(alignmentForce.div(this.size));
         this.acceleration.add(cohesionForce.div(this.size));
+        this.acceleration.add(mouseAttractionForce.div(this.size));
     }
 
     steerTo(target: p5Types.Vector) {
@@ -50,7 +56,7 @@ class Boid {
             if (d > 0 && d < perception) {
                 let diff = p5Types.Vector.sub(this.position, boids[i].position);
                 diff.normalize();
-                diff.div(d);
+                diff.div(d * d * d);
                 steer.add(diff);
                 count++;
             }
@@ -108,6 +114,14 @@ class Boid {
         } else {
             return p5.createVector(0, 0);
         }
+    }
+
+    attraction(p5: p5Types, target: p5Types.Vector) {
+        let radius = 100;
+        if (p5Types.Vector.dist(this.position, target) < radius) {
+            return this.steerTo(target);
+        }
+        return p5.createVector(0, 0);
     }
 
     update(p5: p5Types) {
