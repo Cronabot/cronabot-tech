@@ -56,7 +56,7 @@ class Boid {
             if (d > 0 && d < perception) {
                 let diff = p5Types.Vector.sub(this.position, boids[i].position);
                 diff.normalize();
-                diff.div(d * d * d);
+                diff.div(d ^ (d * 10));
                 steer.add(diff);
                 count++;
             }
