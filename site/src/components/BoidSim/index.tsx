@@ -1,15 +1,17 @@
-import { FC, useState } from 'react';
+import { CSSProperties, FC, useState } from 'react';
 import p5Types from 'p5';
 import dynamic from 'next/dynamic';
 import Boid from './Boid';
 
-interface Props {}
+interface Props {
+    style?: CSSProperties;
+}
 
 const Sketch = dynamic(() => import('react-p5').then((mod) => mod.default), {
     ssr: false,
 });
 
-const BoidSim: FC<Props> = ({}) => {
+const BoidSim: FC<Props> = ({ style }) => {
     const flock: Boid[] = [];
 
     const setup = (p5: p5Types, canvasParentRef: Element) => {
@@ -20,6 +22,7 @@ const BoidSim: FC<Props> = ({}) => {
             flock.push(new Boid(p5));
             console.log(flock.length);
         }
+        p5.frameRate(30);
     };
 
     const draw = (p5: p5Types) => {
@@ -36,7 +39,7 @@ const BoidSim: FC<Props> = ({}) => {
     };
 
     return (
-        <div style={{ height: '100vh', width: '100%', overflow: 'hidden' }}>
+        <div style={style}>
             <Sketch setup={setup} draw={draw} windowResized={windowResized} />
         </div>
     );
