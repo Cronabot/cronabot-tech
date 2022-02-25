@@ -22,6 +22,7 @@ const BoidSim: FC<Props> = ({ style }) => {
             flock.push(new Boid(p5));
             console.log(flock.length);
         }
+        p5.frameRate(30);
     };
 
     const draw = (p5: p5Types) => {
