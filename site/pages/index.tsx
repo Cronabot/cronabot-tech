@@ -33,7 +33,15 @@ const Home: FC<Props> = ({}) => {
         <>
             <NextSeo title='Home' />
             <Navbar />
-            <BoidSim />
+            <BoidSim
+                style={{
+                    height: '100vh',
+                    width: '100%',
+                    overflow: 'hidden',
+                    position: 'fixed',
+                    zIndex: '-1',
+                }}
+            />
             <div className={styles.landing}>
                 <div className={styles.text}>
                     <h3>Hey, I&#39;m</h3>
@@ -42,6 +50,9 @@ const Home: FC<Props> = ({}) => {
                         <h3 className={styles.sub} ref={typedText}></h3>
                     </div>
                 </div>
+            </div>
+            <div className={styles.about}>
+                <h1>Skills</h1>
             </div>
         </>
     );

@@ -1,5 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import styles from './Navbar.module.scss';
 
@@ -27,6 +28,8 @@ const Navbar: FC<Props> = ({}) => {
         }
     }, [toggled]);
 
+    const currentPage = useRouter().pathname;
+
     if (!mounted) return null;
 
     return (
@@ -51,10 +54,42 @@ const Navbar: FC<Props> = ({}) => {
                         <div></div>
                     </div>
                     <div className={styles.links}>
-                        <Link href='/'>.home()</Link>
-                        <Link href='/about'>.about()</Link>
-                        <Link href='/portfolio'>.portfolio()</Link>
-                        <Link href='/contact'>.contact()</Link>
+                        <Link href='/'>
+                            <a
+                                className={
+                                    currentPage == '/' ? styles.active : ''
+                                }>
+                                .home()
+                            </a>
+                        </Link>
+                        <Link href='/about'>
+                            <a
+                                className={
+                                    currentPage == '/about' ? styles.active : ''
+                                }>
+                                .about()
+                            </a>
+                        </Link>
+                        <Link href='/portfolio'>
+                            <a
+                                className={
+                                    currentPage == '/portfolio'
+                                        ? styles.active
+                                        : ''
+                                }>
+                                .portfolio()
+                            </a>
+                        </Link>
+                        <Link href='/contact'>
+                            <a
+                                className={
+                                    currentPage == '/contact'
+                                        ? styles.active
+                                        : ''
+                                }>
+                                .contact()
+                            </a>
+                        </Link>
                     </div>
                 </div>
             </nav>

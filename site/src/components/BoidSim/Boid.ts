@@ -16,8 +16,8 @@ class Boid {
         this.velocity = p5.createVector(p5.random(-1, 1), p5.random(-1, 1));
         this.velocity.setMag(p5.random(2, 4));
         this.acceleration = p5.createVector();
-        this.maxSpeed = 3;
-        this.maxForce = 0.5;
+        this.maxSpeed = 6;
+        this.maxForce = 1;
     }
 
     flock(p5: p5Types, boids: Boid[]) {
