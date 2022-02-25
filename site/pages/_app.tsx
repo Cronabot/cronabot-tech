@@ -12,6 +12,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
                 titleTemplate='%s | cronabot.tech'
                 defaultTitle='cronabot.tech'
                 canonical='https://cronabot.tech/'
+                description='Mani Cronin - Fullstack web developer portfolio'
                 openGraph={{
                     type: 'website',
                     url: 'https://cronabot.tech/',
