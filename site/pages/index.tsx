@@ -38,7 +38,7 @@ const Home: FC<Props> = ({}) => {
                     height: '100vh',
                     width: '100%',
                     overflow: 'hidden',
-                    position: 'absolute',
+                    position: 'fixed',
                     zIndex: '-1',
                 }}
             />
